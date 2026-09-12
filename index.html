@@ -7,7 +7,7 @@
     <!-- Google Fonts & Font Awesome Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
@@ -20,91 +20,103 @@
 
         body {
             font-family: 'Rajdhani', sans-serif;
-            background-color: #0d0221;
+            background-color: #07070a;
             color: #ffffff;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            overflow-x: hidden;
+            overflow: hidden;
             position: relative;
         }
 
-        /* 80s Synthwave Moving Grid Background */
-        .synthwave-bg {
+        /* Dark Atmospheric Background Gradient */
+        .bat-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
             z-index: -2;
-            background: linear-gradient(to bottom, #020010 0%, #1a0033 50%, #4a0066 80%, #ff007f 100%);
-            overflow: hidden;
+            background: radial-gradient(circle at 50% 30%, #201a30 0%, #0d0b12 60%, #050407 100%);
         }
 
-        /* Retro Sun */
-        .retro-sun {
+        /* Animated Moon Accent */
+        .gothic-moon {
             position: absolute;
-            top: 45%;
+            top: 15%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            width: 220px;
-            height: 220px;
+            transform: translateX(-50%);
+            width: 240px;
+            height: 240px;
             border-radius: 50%;
-            background: linear-gradient(to bottom, #ffe600, #ff007f);
-            box-shadow: 0 0 40px #ff007f, 0 0 80px #ffe600;
+            background: radial-gradient(circle, #e2e8f0 0%, #94a3b8 60%, transparent 100%);
+            opacity: 0.12;
+            box-shadow: 0 0 60px rgba(226, 232, 240, 0.2);
             z-index: -2;
         }
 
-        /* Moving Grid Horizon */
-        .grid-container {
-            position: absolute;
-            bottom: 0;
+        /* Flying Bats Animation Container */
+        .bats-container {
+            position: fixed;
+            top: 0;
             left: 0;
             width: 100%;
-            height: 55vh;
-            perspective: 300px;
-            overflow: hidden;
-            border-top: 2px solid #ff007f;
-            box-shadow: 0 -10px 20px rgba(255, 0, 127, 0.5);
+            height: 100%;
+            pointer-events: none;
             z-index: -1;
-            background: linear-gradient(to bottom, rgba(13, 2, 33, 0.2), #0d0221 90%);
         }
 
-        .grid-lines {
+        .bat {
             position: absolute;
-            top: -100%;
-            left: -50%;
-            width: 200%;
-            height: 300%;
-            background-image: 
-                linear-gradient(to right, rgba(0, 242, 254, 0.6) 2px, transparent 2px),
-                linear-gradient(to bottom, rgba(0, 242, 254, 0.6) 2px, transparent 2px);
-            background-size: 50px 50px;
-            transform: rotateX(75deg);
-            animation: moveGrid 2s linear infinite;
+            color: #121018;
+            filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.9));
+            animation: fly linear infinite;
         }
 
-        @keyframes moveGrid {
+        /* Bat Sizing & Individual Flight Paths */
+        .bat:nth-child(1) { font-size: 1.8rem; top: 70%; left: -10%; animation-duration: 7s; animation-delay: 0s; }
+        .bat:nth-child(2) { font-size: 2.4rem; top: 40%; left: -10%; animation-duration: 9s; animation-delay: 2s; }
+        .bat:nth-child(3) { font-size: 1.4rem; top: 20%; left: -10%; animation-duration: 6s; animation-delay: 1s; }
+        .bat:nth-child(4) { font-size: 3.0rem; top: 85%; left: -10%; animation-duration: 11s; animation-delay: 4s; }
+        .bat:nth-child(5) { font-size: 2.0rem; top: 15%; left: -10%; animation-duration: 8s; animation-delay: 3.5s; }
+        .bat:nth-child(6) { font-size: 1.6rem; top: 55%; left: -10%; animation-duration: 7.5s; animation-delay: 5s; }
+
+        @keyframes fly {
             0% {
-                transform: rotateX(75deg) translateY(0);
+                transform: translateX(0) translateY(0) scaleY(1) rotate(5deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.85;
+            }
+            25% {
+                transform: translateX(35vw) translateY(-40px) scaleY(0.7) rotate(-8deg);
+            }
+            50% {
+                transform: translateX(65vw) translateY(30px) scaleY(1.1) rotate(6deg);
+            }
+            75% {
+                transform: translateX(85vw) translateY(-25px) scaleY(0.8) rotate(-5deg);
+                opacity: 0.85;
             }
             100% {
-                transform: rotateX(75deg) translateY(50px);
+                transform: translateX(115vw) translateY(10px) scaleY(1) rotate(4deg);
+                opacity: 0;
             }
         }
 
         /* Container Card */
         .card {
-            background: rgba(13, 2, 33, 0.85);
-            border: 2px solid #00f2fe;
-            backdrop-filter: blur(10px);
+            background: rgba(13, 11, 18, 0.88);
+            border: 1px solid rgba(147, 51, 234, 0.3);
+            backdrop-filter: blur(12px);
             border-radius: 20px;
             width: 100%;
             max-width: 420px;
             padding: 32px 24px;
-            box-shadow: 0 0 25px rgba(0, 242, 254, 0.4), inset 0 0 15px rgba(255, 0, 127, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(147, 51, 234, 0.15);
             text-align: center;
             z-index: 1;
         }
@@ -115,9 +127,9 @@
             height: 110px;
             margin: 0 auto 18px;
             border-radius: 50%;
-            padding: 4px;
-            background: linear-gradient(135deg, #00f2fe, #ff007f);
-            box-shadow: 0 0 20px #ff007f;
+            padding: 3px;
+            background: linear-gradient(135deg, #7e22ce, #3b0764, #1e1b4b);
+            box-shadow: 0 0 20px rgba(126, 34, 206, 0.4);
         }
 
         .profile-img {
@@ -129,19 +141,18 @@
         }
 
         .username {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 1.05rem;
-            color: #00f2fe;
-            text-shadow: 0 0 10px #00f2fe, 0 0 20px #00f2fe;
-            margin-bottom: 12px;
-            letter-spacing: -0.5px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.35rem;
+            color: #e9d5ff;
+            text-shadow: 0 0 12px rgba(168, 85, 247, 0.5);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
         }
 
         .bio {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 600;
-            color: #ff77bc;
-            text-shadow: 0 0 8px rgba(255, 0, 127, 0.6);
+            color: #a855f7;
             margin-bottom: 28px;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -158,48 +169,47 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: rgba(255, 0, 127, 0.15);
-            border: 1px solid #ff007f;
+            background: rgba(24, 18, 36, 0.6);
+            border: 1px solid rgba(168, 85, 247, 0.25);
             padding: 14px 20px;
             border-radius: 12px;
             color: #ffffff;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             letter-spacing: 1px;
             text-transform: uppercase;
             transition: all 0.25s ease;
-            box-shadow: 0 0 10px rgba(255, 0, 127, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
         }
 
         .link-button:hover {
-            background: rgba(0, 242, 254, 0.25);
-            border-color: #00f2fe;
-            color: #ffffff;
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 0 20px #00f2fe;
+            background: rgba(126, 34, 206, 0.3);
+            border-color: #a855f7;
+            transform: translateY(-2px);
+            box-shadow: 0 0 18px rgba(168, 85, 247, 0.4);
         }
 
         .link-button i.brand-icon {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             width: 26px;
             text-align: left;
         }
 
         /* Brand Colors */
-        .link-button.twitch i.brand-icon { color: #a970ff; }
-        .link-button.youtube i.brand-icon { color: #ff3333; }
-        .link-button.tiktok i.brand-icon { color: #00f2fe; }
-        .link-button.instagram i.brand-icon { color: #ff007f; }
+        .link-button.twitch i.brand-icon { color: #c084fc; }
+        .link-button.youtube i.brand-icon { color: #f87171; }
+        .link-button.tiktok i.brand-icon { color: #38bdf8; }
+        .link-button.instagram i.brand-icon { color: #f472b6; }
 
         .link-button .fa-chevron-right {
-            font-size: 0.9rem;
-            color: #ff77bc;
+            font-size: 0.85rem;
+            color: #6b21a8;
             transition: transform 0.2s ease, color 0.2s ease;
         }
 
         .link-button:hover .fa-chevron-right {
-            color: #00f2fe;
+            color: #e9d5ff;
             transform: translateX(4px);
         }
 
@@ -207,19 +217,25 @@
         .footer {
             margin-top: 32px;
             font-size: 0.85rem;
-            color: #a0a0c0;
+            color: #6b7280;
             letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
 
-    <!-- 80s Moving Grid Background Structure -->
-    <div class="synthwave-bg">
-        <div class="retro-sun"></div>
-        <div class="grid-container">
-            <div class="grid-lines"></div>
-        </div>
+    <!-- Dark Background & Flying Bats -->
+    <div class="bat-bg">
+        <div class="gothic-moon"></div>
+    </div>
+
+    <div class="bats-container">
+        <i class="fa-solid fa-bat bat"></i>
+        <i class="fa-solid fa-bat bat"></i>
+        <i class="fa-solid fa-bat bat"></i>
+        <i class="fa-solid fa-bat bat"></i>
+        <i class="fa-solid fa-bat bat"></i>
+        <i class="fa-solid fa-bat bat"></i>
     </div>
 
     <div class="card">
