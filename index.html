@@ -20,14 +20,14 @@
 
         body {
             font-family: 'Rajdhani', sans-serif;
-            background-color: #07070a;
+            background-color: #05040a;
             color: #ffffff;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            overflow: hidden;
+            overflow-x: hidden;
             position: relative;
         }
 
@@ -38,85 +38,96 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: -2;
-            background: radial-gradient(circle at 50% 30%, #201a30 0%, #0d0b12 60%, #050407 100%);
+            z-index: -3;
+            background: radial-gradient(circle at 50% 30%, #1e152d 0%, #0a0812 60%, #030206 100%);
         }
 
-        /* Animated Moon Accent */
+        /* Gothic Moon Accent */
         .gothic-moon {
             position: absolute;
-            top: 15%;
+            top: 10%;
             left: 50%;
             transform: translateX(-50%);
-            width: 240px;
-            height: 240px;
+            width: 260px;
+            height: 260px;
             border-radius: 50%;
-            background: radial-gradient(circle, #e2e8f0 0%, #94a3b8 60%, transparent 100%);
-            opacity: 0.12;
-            box-shadow: 0 0 60px rgba(226, 232, 240, 0.2);
-            z-index: -2;
+            background: radial-gradient(circle, #f1f5f9 0%, #64748b 70%, transparent 100%);
+            opacity: 0.18;
+            box-shadow: 0 0 80px rgba(241, 245, 249, 0.25);
+            z-index: -3;
         }
 
-        /* Flying Bats Animation Container */
+        /* Swarm Container */
         .bats-container {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             pointer-events: none;
-            z-index: -1;
+            z-index: -2;
+            overflow: hidden;
         }
 
         .bat {
             position: absolute;
-            color: #121018;
-            filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.9));
-            animation: fly linear infinite;
+            color: #a855f7;
+            opacity: 0;
+            filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.4));
+            animation: flyAcross 8s linear infinite, wingFlap 0.35s ease-in-out infinite alternate;
         }
 
-        /* Bat Sizing & Individual Flight Paths */
-        .bat:nth-child(1) { font-size: 1.8rem; top: 70%; left: -10%; animation-duration: 7s; animation-delay: 0s; }
-        .bat:nth-child(2) { font-size: 2.4rem; top: 40%; left: -10%; animation-duration: 9s; animation-delay: 2s; }
-        .bat:nth-child(3) { font-size: 1.4rem; top: 20%; left: -10%; animation-duration: 6s; animation-delay: 1s; }
-        .bat:nth-child(4) { font-size: 3.0rem; top: 85%; left: -10%; animation-duration: 11s; animation-delay: 4s; }
-        .bat:nth-child(5) { font-size: 2.0rem; top: 15%; left: -10%; animation-duration: 8s; animation-delay: 3.5s; }
-        .bat:nth-child(6) { font-size: 1.6rem; top: 55%; left: -10%; animation-duration: 7.5s; animation-delay: 5s; }
-
-        @keyframes fly {
+        @keyframes flyAcross {
             0% {
-                transform: translateX(0) translateY(0) scaleY(1) rotate(5deg);
+                transform: translateX(-15vw) translateY(0);
                 opacity: 0;
             }
             10% {
-                opacity: 0.85;
-            }
-            25% {
-                transform: translateX(35vw) translateY(-40px) scaleY(0.7) rotate(-8deg);
+                opacity: 0.75;
             }
             50% {
-                transform: translateX(65vw) translateY(30px) scaleY(1.1) rotate(6deg);
-            }
-            75% {
-                transform: translateX(85vw) translateY(-25px) scaleY(0.8) rotate(-5deg);
+                transform: translateX(50vw) translateY(-40px);
                 opacity: 0.85;
             }
+            90% {
+                opacity: 0.75;
+            }
             100% {
-                transform: translateX(115vw) translateY(10px) scaleY(1) rotate(4deg);
+                transform: translateX(115vw) translateY(20px);
                 opacity: 0;
             }
         }
+
+        @keyframes wingFlap {
+            0% {
+                transform: scaleY(1.2) rotate(-8deg);
+            }
+            100% {
+                transform: scaleY(0.4) rotate(8deg);
+            }
+        }
+
+        .bat:nth-child(1)  { font-size: 2.2rem; top: 15%; animation-duration: 7s;  animation-delay: 0s;   color: #9333ea; }
+        .bat:nth-child(2)  { font-size: 1.4rem; top: 28%; animation-duration: 5.5s; animation-delay: 1.2s; color: #a855f7; }
+        .bat:nth-child(3)  { font-size: 3.0rem; top: 45%; animation-duration: 9s;  animation-delay: 0.5s; color: #6b21a8; }
+        .bat:nth-child(4)  { font-size: 1.8rem; top: 62%; animation-duration: 6.5s; animation-delay: 2.5s; color: #c084fc; }
+        .bat:nth-child(5)  { font-size: 2.5rem; top: 78%; animation-duration: 8s;  animation-delay: 1.8s; color: #7e22ce; }
+        .bat:nth-child(6)  { font-size: 1.2rem; top: 10%; animation-duration: 5s;  animation-delay: 3.2s; color: #a855f7; }
+        .bat:nth-child(7)  { font-size: 2.8rem; top: 35%; animation-duration: 8.5s; animation-delay: 4.0s; color: #6b21a8; }
+        .bat:nth-child(8)  { font-size: 1.6rem; top: 52%; animation-duration: 6s;  animation-delay: 3.5s; color: #9333ea; }
+        .bat:nth-child(9)  { font-size: 2.0rem; top: 70%; animation-duration: 7.2s; animation-delay: 4.8s; color: #c084fc; }
+        .bat:nth-child(10) { font-size: 1.5rem; top: 85%; animation-duration: 5.8s; animation-delay: 2.1s; color: #7e22ce; }
 
         /* Container Card */
         .card {
             background: rgba(13, 11, 18, 0.88);
-            border: 1px solid rgba(147, 51, 234, 0.3);
+            border: 1px solid rgba(168, 85, 247, 0.35);
             backdrop-filter: blur(12px);
             border-radius: 20px;
             width: 100%;
             max-width: 420px;
             padding: 32px 24px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(147, 51, 234, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 0 25px rgba(168, 85, 247, 0.2);
             text-align: center;
             z-index: 1;
         }
@@ -128,8 +139,8 @@
             margin: 0 auto 18px;
             border-radius: 50%;
             padding: 3px;
-            background: linear-gradient(135deg, #7e22ce, #3b0764, #1e1b4b);
-            box-shadow: 0 0 20px rgba(126, 34, 206, 0.4);
+            background: linear-gradient(135deg, #a855f7, #581c87);
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
         }
 
         .profile-img {
@@ -143,8 +154,8 @@
         .username {
             font-family: 'Cinzel', serif;
             font-size: 1.35rem;
-            color: #e9d5ff;
-            text-shadow: 0 0 12px rgba(168, 85, 247, 0.5);
+            color: #f3e8ff;
+            text-shadow: 0 0 12px rgba(168, 85, 247, 0.6);
             margin-bottom: 8px;
             letter-spacing: 1px;
         }
@@ -152,25 +163,49 @@
         .bio {
             font-size: 1.05rem;
             font-weight: 600;
-            color: #a855f7;
-            margin-bottom: 28px;
+            color: #c084fc;
+            margin-bottom: 20px;
             letter-spacing: 1px;
             text-transform: uppercase;
+        }
+
+        /* Creator Code Box */
+        .creator-code-box {
+            background: rgba(168, 85, 247, 0.12);
+            border: 1px dashed rgba(168, 85, 247, 0.5);
+            border-radius: 12px;
+            padding: 10px 14px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            color: #e9d5ff;
+        }
+
+        .creator-code-box strong {
+            color: #f3e8ff;
+            background: rgba(168, 85, 247, 0.3);
+            padding: 2px 8px;
+            border-radius: 6px;
+            letter-spacing: 1px;
+            font-family: 'Cinzel', serif;
         }
 
         /* Links Section */
         .links-container {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 14px;
         }
 
         .link-button {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: rgba(24, 18, 36, 0.6);
-            border: 1px solid rgba(168, 85, 247, 0.25);
+            background: rgba(24, 18, 36, 0.7);
+            border: 1px solid rgba(168, 85, 247, 0.3);
             padding: 14px 20px;
             border-radius: 12px;
             color: #ffffff;
@@ -184,10 +219,10 @@
         }
 
         .link-button:hover {
-            background: rgba(126, 34, 206, 0.3);
+            background: rgba(126, 34, 206, 0.35);
             border-color: #a855f7;
             transform: translateY(-2px);
-            box-shadow: 0 0 18px rgba(168, 85, 247, 0.4);
+            box-shadow: 0 0 18px rgba(168, 85, 247, 0.5);
         }
 
         .link-button i.brand-icon {
@@ -201,15 +236,16 @@
         .link-button.youtube i.brand-icon { color: #f87171; }
         .link-button.tiktok i.brand-icon { color: #38bdf8; }
         .link-button.instagram i.brand-icon { color: #f472b6; }
+        .link-button.paypal i.brand-icon { color: #60a5fa; }
 
         .link-button .fa-chevron-right {
             font-size: 0.85rem;
-            color: #6b21a8;
+            color: #a855f7;
             transition: transform 0.2s ease, color 0.2s ease;
         }
 
         .link-button:hover .fa-chevron-right {
-            color: #e9d5ff;
+            color: #f3e8ff;
             transform: translateX(4px);
         }
 
@@ -217,19 +253,24 @@
         .footer {
             margin-top: 32px;
             font-size: 0.85rem;
-            color: #6b7280;
+            color: #71717a;
             letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Dark Background & Flying Bats -->
+    <!-- Dark Background Layer -->
     <div class="bat-bg">
         <div class="gothic-moon"></div>
     </div>
 
+    <!-- Animated Flying Swarm of Bats -->
     <div class="bats-container">
+        <i class="fa-solid fa-bat bat"></i>
+        <i class="fa-solid fa-bat bat"></i>
+        <i class="fa-solid fa-bat bat"></i>
+        <i class="fa-solid fa-bat bat"></i>
         <i class="fa-solid fa-bat bat"></i>
         <i class="fa-solid fa-bat bat"></i>
         <i class="fa-solid fa-bat bat"></i>
@@ -247,7 +288,13 @@
         <h1 class="username">@oreganosauce</h1>
         <p class="bio">Livestreamer • Content Creator • Gamer</p>
 
-        <!-- Social Links -->
+        <!-- Fortnite Creator Code Banner -->
+        <div class="creator-code-box">
+            <i class="fa-solid fa-gamepad" style="color: #c084fc;"></i>
+            <span>Use Fortnite Creator Code: <strong>oregano1</strong></span>
+        </div>
+
+        <!-- Social Links & Support -->
         <div class="links-container">
             <!-- Twitch -->
             <a href="https://www.twitch.tv/oregano_sauce89" class="link-button twitch" target="_blank" rel="noopener">
@@ -276,6 +323,13 @@
                 <span>Instagram</span>
                 <i class="fa-solid fa-chevron-right"></i>
             </a>
+
+            <!-- PayPal Support -->
+            <a href="https://www.paypal.me/oreganosauce" class="link-button paypal" target="_blank" rel="noopener">
+                <i class="fa-brands fa-paypal brand-icon"></i>
+                <span>Support Creator</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
         </div>
 
         <!-- Footer -->
@@ -286,3 +340,4 @@
 
 </body>
 </html>
+ 
