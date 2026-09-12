@@ -7,7 +7,7 @@
     <!-- Google Fonts & Font Awesome Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
@@ -20,7 +20,7 @@
 
         body {
             font-family: 'Rajdhani', sans-serif;
-            background-color: #06040a;
+            background-color: #0d0221;
             color: #ffffff;
             min-height: 100vh;
             display: flex;
@@ -31,132 +31,80 @@
             position: relative;
         }
 
-        /* Dynamic Darkwave Background Layer */
-        .darkwave-bg {
+        /* 80s Synthwave Moving Grid Background */
+        .synthwave-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: -4;
-            background: linear-gradient(135deg, #090314 0%, #15092b 40%, #080312 70%, #1c052d 100%);
-            background-size: 300% 300%;
-            animation: darkwaveGradient 12s ease infinite alternate;
-        }
-
-        @keyframes darkwaveGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Subtle Scrolling Grid Texture overlay */
-        .darkwave-grid {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -3;
-            background-image: 
-                linear-gradient(to right, rgba(147, 51, 234, 0.07) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(147, 51, 234, 0.07) 1px, transparent 1px);
-            background-size: 40px 40px;
-            animation: scrollGrid 20s linear infinite;
-            opacity: 0.6;
-        }
-
-        @keyframes scrollGrid {
-            0% { background-position: 0 0; }
-            100% { background-position: 40px 40px; }
-        }
-
-        /* Gothic Moon Accent */
-        .gothic-moon {
-            position: absolute;
-            top: 10%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 260px;
-            height: 260px;
-            border-radius: 50%;
-            background: radial-gradient(circle, #f1f5f9 0%, #64748b 70%, transparent 100%);
-            opacity: 0.18;
-            box-shadow: 0 0 80px rgba(168, 85, 247, 0.3);
-            z-index: -3;
-        }
-
-        /* Swarm Container */
-        .bats-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
             z-index: -2;
+            background: linear-gradient(to bottom, #020010 0%, #1a0033 50%, #4a0066 80%, #ff007f 100%);
             overflow: hidden;
         }
 
-        .bat {
+        /* Retro Sun */
+        .retro-sun {
             position: absolute;
-            color: #c084fc;
-            opacity: 0;
-            filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.6));
-            animation: flyAcross 8s linear infinite, wingFlap 0.35s ease-in-out infinite alternate;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: linear-gradient(to bottom, #ffe600, #ff007f);
+            box-shadow: 0 0 40px #ff007f, 0 0 80px #ffe600;
+            z-index: -2;
         }
 
-        @keyframes flyAcross {
+        /* Moving Grid Horizon */
+        .grid-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 55vh;
+            perspective: 300px;
+            overflow: hidden;
+            border-top: 2px solid #ff007f;
+            box-shadow: 0 -10px 20px rgba(255, 0, 127, 0.5);
+            z-index: -1;
+            background: linear-gradient(to bottom, rgba(13, 2, 33, 0.2), #0d0221 90%);
+        }
+
+        .grid-lines {
+            position: absolute;
+            top: -100%;
+            left: -50%;
+            width: 200%;
+            height: 300%;
+            background-image: 
+                linear-gradient(to right, rgba(0, 242, 254, 0.6) 2px, transparent 2px),
+                linear-gradient(to bottom, rgba(0, 242, 254, 0.6) 2px, transparent 2px);
+            background-size: 50px 50px;
+            transform: rotateX(75deg);
+            animation: moveGrid 2s linear infinite;
+        }
+
+        @keyframes moveGrid {
             0% {
-                transform: translateX(-15vw) translateY(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.85;
-            }
-            50% {
-                transform: translateX(50vw) translateY(-40px);
-                opacity: 0.95;
-            }
-            90% {
-                opacity: 0.85;
+                transform: rotateX(75deg) translateY(0);
             }
             100% {
-                transform: translateX(115vw) translateY(20px);
-                opacity: 0;
+                transform: rotateX(75deg) translateY(50px);
             }
         }
-
-        @keyframes wingFlap {
-            0% {
-                transform: scaleY(1.2) rotate(-8deg);
-            }
-            100% {
-                transform: scaleY(0.4) rotate(8deg);
-            }
-        }
-
-        .bat:nth-child(1)  { font-size: 2.2rem; top: 15%; animation-duration: 7s;  animation-delay: 0s;   color: #9333ea; }
-        .bat:nth-child(2)  { font-size: 1.4rem; top: 28%; animation-duration: 5.5s; animation-delay: 1.2s; color: #a855f7; }
-        .bat:nth-child(3)  { font-size: 3.0rem; top: 45%; animation-duration: 9s;  animation-delay: 0.5s; color: #6b21a8; }
-        .bat:nth-child(4)  { font-size: 1.8rem; top: 62%; animation-duration: 6.5s; animation-delay: 2.5s; color: #c084fc; }
-        .bat:nth-child(5)  { font-size: 2.5rem; top: 78%; animation-duration: 8s;  animation-delay: 1.8s; color: #7e22ce; }
-        .bat:nth-child(6)  { font-size: 1.2rem; top: 10%; animation-duration: 5s;  animation-delay: 3.2s; color: #a855f7; }
-        .bat:nth-child(7)  { font-size: 2.8rem; top: 35%; animation-duration: 8.5s; animation-delay: 4.0s; color: #6b21a8; }
-        .bat:nth-child(8)  { font-size: 1.6rem; top: 52%; animation-duration: 6s;  animation-delay: 3.5s; color: #9333ea; }
-        .bat:nth-child(9)  { font-size: 2.0rem; top: 70%; animation-duration: 7.2s; animation-delay: 4.8s; color: #c084fc; }
-        .bat:nth-child(10) { font-size: 1.5rem; top: 85%; animation-duration: 5.8s; animation-delay: 2.1s; color: #7e22ce; }
 
         /* Container Card */
         .card {
-            background: rgba(13, 11, 20, 0.88);
-            border: 1px solid rgba(168, 85, 247, 0.4);
-            backdrop-filter: blur(14px);
+            background: rgba(13, 2, 33, 0.85);
+            border: 2px solid #00f2fe;
+            backdrop-filter: blur(10px);
             border-radius: 20px;
             width: 100%;
             max-width: 420px;
             padding: 32px 24px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 0 30px rgba(168, 85, 247, 0.25);
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.4), inset 0 0 15px rgba(255, 0, 127, 0.3);
             text-align: center;
             z-index: 1;
         }
@@ -167,9 +115,9 @@
             height: 110px;
             margin: 0 auto 18px;
             border-radius: 50%;
-            padding: 3px;
-            background: linear-gradient(135deg, #a855f7, #581c87);
-            box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+            padding: 4px;
+            background: linear-gradient(135deg, #00f2fe, #ff007f);
+            box-shadow: 0 0 20px #ff007f;
         }
 
         .profile-img {
@@ -181,27 +129,28 @@
         }
 
         .username {
-            font-family: 'Cinzel', serif;
-            font-size: 1.35rem;
-            color: #f3e8ff;
-            text-shadow: 0 0 12px rgba(168, 85, 247, 0.6);
-            margin-bottom: 8px;
-            letter-spacing: 1px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.05rem;
+            color: #00f2fe;
+            text-shadow: 0 0 10px #00f2fe, 0 0 20px #00f2fe;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
         }
 
         .bio {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            color: #c084fc;
+            color: #ff77bc;
+            text-shadow: 0 0 8px rgba(255, 0, 127, 0.6);
             margin-bottom: 20px;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
 
-        /* Creator Code Box */
+        /* Fortnite Creator Code Banner */
         .creator-code-box {
-            background: rgba(168, 85, 247, 0.12);
-            border: 1px dashed rgba(168, 85, 247, 0.5);
+            background: rgba(255, 0, 127, 0.15);
+            border: 1px dashed #ff007f;
             border-radius: 12px;
             padding: 10px 14px;
             margin-bottom: 24px;
@@ -210,16 +159,17 @@
             justify-content: center;
             gap: 8px;
             font-size: 0.95rem;
-            color: #e9d5ff;
+            color: #ffffff;
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
         }
 
         .creator-code-box strong {
-            color: #f3e8ff;
-            background: rgba(168, 85, 247, 0.3);
+            color: #00f2fe;
+            background: rgba(0, 242, 254, 0.2);
             padding: 2px 8px;
             border-radius: 6px;
             letter-spacing: 1px;
-            font-family: 'Cinzel', serif;
+            text-shadow: 0 0 5px #00f2fe;
         }
 
         /* Links Section */
@@ -233,8 +183,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: rgba(24, 18, 36, 0.75);
-            border: 1px solid rgba(168, 85, 247, 0.3);
+            background: rgba(255, 0, 127, 0.15);
+            border: 1px solid #ff007f;
             padding: 14px 20px;
             border-radius: 12px;
             color: #ffffff;
@@ -244,14 +194,15 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             transition: all 0.25s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.2);
         }
 
         .link-button:hover {
-            background: rgba(126, 34, 206, 0.35);
-            border-color: #a855f7;
-            transform: translateY(-2px);
-            box-shadow: 0 0 18px rgba(168, 85, 247, 0.5);
+            background: rgba(0, 242, 254, 0.25);
+            border-color: #00f2fe;
+            color: #ffffff;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 0 20px #00f2fe;
         }
 
         .link-button i.brand-icon {
@@ -261,20 +212,20 @@
         }
 
         /* Brand Colors */
-        .link-button.twitch i.brand-icon { color: #c084fc; }
-        .link-button.youtube i.brand-icon { color: #f87171; }
-        .link-button.tiktok i.brand-icon { color: #38bdf8; }
-        .link-button.instagram i.brand-icon { color: #f472b6; }
-        .link-button.paypal i.brand-icon { color: #60a5fa; }
+        .link-button.twitch i.brand-icon { color: #a970ff; }
+        .link-button.youtube i.brand-icon { color: #ff3333; }
+        .link-button.tiktok i.brand-icon { color: #00f2fe; }
+        .link-button.instagram i.brand-icon { color: #ff007f; }
+        .link-button.paypal i.brand-icon { color: #00d2ff; }
 
         .link-button .fa-chevron-right {
             font-size: 0.85rem;
-            color: #a855f7;
+            color: #ff77bc;
             transition: transform 0.2s ease, color 0.2s ease;
         }
 
         .link-button:hover .fa-chevron-right {
-            color: #f3e8ff;
+            color: #00f2fe;
             transform: translateX(4px);
         }
 
@@ -282,31 +233,19 @@
         .footer {
             margin-top: 32px;
             font-size: 0.85rem;
-            color: #71717a;
+            color: #a0a0c0;
             letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Darkwave Animated Gradient Background & Grid Texture -->
-    <div class="darkwave-bg"></div>
-    <div class="darkwave-grid">
-        <div class="gothic-moon"></div>
-    </div>
-
-    <!-- Animated Flying Swarm of Bats -->
-    <div class="bats-container">
-        <i class="fa-solid fa-bat bat"></i>
-        <i class="fa-solid fa-bat bat"></i>
-        <i class="fa-solid fa-bat bat"></i>
-        <i class="fa-solid fa-bat bat"></i>
-        <i class="fa-solid fa-bat bat"></i>
-        <i class="fa-solid fa-bat bat"></i>
-        <i class="fa-solid fa-bat bat"></i>
-        <i class="fa-solid fa-bat bat"></i>
-        <i class="fa-solid fa-bat bat"></i>
-        <i class="fa-solid fa-bat bat"></i>
+    <!-- 80s Moving Grid Background Structure -->
+    <div class="synthwave-bg">
+        <div class="retro-sun"></div>
+        <div class="grid-container">
+            <div class="grid-lines"></div>
+        </div>
     </div>
 
     <div class="card">
@@ -320,7 +259,7 @@
 
         <!-- Fortnite Creator Code Banner -->
         <div class="creator-code-box">
-            <i class="fa-solid fa-gamepad" style="color: #c084fc;"></i>
+            <i class="fa-solid fa-gamepad" style="color: #00f2fe;"></i>
             <span>Use Fortnite Creator Code: <strong>oregano1</strong></span>
         </div>
 
