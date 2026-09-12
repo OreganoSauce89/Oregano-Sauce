@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oreganosauce | Gaming & Socials</title>
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* Global Reset & Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0b0c10;
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(145, 70, 255, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(255, 0, 85, 0.15) 0%, transparent 40%);
+    }
+
+    /* Container Card */
+    .container {
+      width: 100%;
+      max-width: 460px;
+      background: rgba(18, 18, 26, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 36px 24px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Avatar Section */
+    .avatar-wrapper {
+      position: relative;
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 18px;
+    }
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #9146FF;
+      box-shadow: 0 0 20px rgba(145, 70, 255, 0.4);
+    }
+
+    .live-badge {
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      background: #ff4655;
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 12px;
+      border: 2px solid #0b0c10;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Profile Info */
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      background: linear-gradient(135deg, #fff 30%, #a8a8a8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      color: #a0a0b0;
+      margin-bottom: 28px;
+    }
+
+    /* Links Section */
+    .links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      padding: 16px 20px;
+      border-radius: 14px;
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: all 0.25s ease-in-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .link-card i {
+      font-size: 1.4rem;
+      width: 32px;
+      text-align: center;
+      margin-right: 12px;
+    }
+
+    .link-text {
+      flex: 1;
+      text-align: left;
+    }
+
+    .arrow-icon {
+      font-size: 0.85rem;
+      opacity: 0.5;
+      transition: transform 0.25s ease;
+    }
+
+    /* Brand Accent Colors & Hover States */
+    .link-card.twitch i { color: #9146FF; }
+    .link-card.youtube i { color: #FF0000; }
+    .link-card.instagram i { color: #E1306C; }
+    .link-card.tiktok i { color: #00f2fe; }
+
+    .link-card:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.09);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .link-card.twitch:hover { border-color: rgba(145, 70, 255, 0.5); }
+    .link-card.youtube:hover { border-color: rgba(255, 0, 0, 0.5); }
+    .link-card.instagram:hover { border-color: rgba(225, 48, 108, 0.5); }
+    .link-card.tiktok:hover { border-color: rgba(0, 242, 254, 0.5); }
+
+    .link-card:hover .arrow-icon {
+      transform: translateX(4px);
+      opacity: 1;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 32px;
+      font-size: 0.75rem;
+      color: #606070;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Profile Image / Avatar -->
+    <div class="avatar-wrapper">
+      <img src="https://via.placeholder.com/150" alt="Profile Picture" class="avatar">
+      <span class="live-badge">LIVE</span>
+    </div>
+
+    <!-- Title & Bio -->
+    <h1>@oreganosauce</h1>
+    <p class="subtitle">Livestreamer • Content Creator • Gamer</p>
+
+    <!-- Social Links -->
+    <div class="links-list">
+      
+      <!-- Twitch -->
+      <a href="https://twitch.tv/oreganosauce" target="_blank" rel="noopener noreferrer" class="link-card twitch">
+        <i class="fa-brands fa-twitch"></i>
+        <span class="link-text">Watch Live on Twitch</span>
+        <i class="fa-solid fa-chevron-right arrow-icon"></i>
+      </a>
+
+      <!-- YouTube -->
+      <a href="https://youtube.com/@oreganosauce" target="_blank" rel="noopener noreferrer" class="link-card youtube">
+        <i class="fa-brands fa-youtube"></i>
+        <span class="link-text">YouTube Videos & VODs</span>
+        <i class="fa-solid fa-chevron-right arrow-icon"></i>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://instagram.com/oreganosauce" target="_blank" rel="noopener noreferrer" class="link-card instagram">
+        <i class="fa-brands fa-instagram"></i>
+        <span class="link-text">Gaming Instagram</span>
+        <i class="fa-solid fa-chevron-right arrow-icon"></i>
+      </a>
+
+      <!-- TikTok -->
+      <a href="https://tiktok.com/@oreganosauce" target="_blank" rel="noopener noreferrer" class="link-card tiktok">
+        <i class="fa-brands fa-tiktok"></i>
+        <span class="link-text">TikTok Clips & Short Content</span>
+        <i class="fa-solid fa-chevron-right arrow-icon"></i>
+      </a>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      © 2026 Oreganosauce. All rights reserved.
+    </footer>
+  </div>
+
+</body>
+</html>
