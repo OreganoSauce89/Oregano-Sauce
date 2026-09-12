@@ -20,7 +20,7 @@
 
         body {
             font-family: 'Rajdhani', sans-serif;
-            background-color: #05040a;
+            background-color: #06040a;
             color: #ffffff;
             min-height: 100vh;
             display: flex;
@@ -31,15 +31,44 @@
             position: relative;
         }
 
-        /* Dark Atmospheric Background Gradient */
-        .bat-bg {
+        /* Dynamic Darkwave Background Layer */
+        .darkwave-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -4;
+            background: linear-gradient(135deg, #090314 0%, #15092b 40%, #080312 70%, #1c052d 100%);
+            background-size: 300% 300%;
+            animation: darkwaveGradient 12s ease infinite alternate;
+        }
+
+        @keyframes darkwaveGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Subtle Scrolling Grid Texture overlay */
+        .darkwave-grid {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
             z-index: -3;
-            background: radial-gradient(circle at 50% 30%, #1e152d 0%, #0a0812 60%, #030206 100%);
+            background-image: 
+                linear-gradient(to right, rgba(147, 51, 234, 0.07) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(147, 51, 234, 0.07) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: scrollGrid 20s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes scrollGrid {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 40px; }
         }
 
         /* Gothic Moon Accent */
@@ -53,7 +82,7 @@
             border-radius: 50%;
             background: radial-gradient(circle, #f1f5f9 0%, #64748b 70%, transparent 100%);
             opacity: 0.18;
-            box-shadow: 0 0 80px rgba(241, 245, 249, 0.25);
+            box-shadow: 0 0 80px rgba(168, 85, 247, 0.3);
             z-index: -3;
         }
 
@@ -71,9 +100,9 @@
 
         .bat {
             position: absolute;
-            color: #a855f7;
+            color: #c084fc;
             opacity: 0;
-            filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.4));
+            filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.6));
             animation: flyAcross 8s linear infinite, wingFlap 0.35s ease-in-out infinite alternate;
         }
 
@@ -83,14 +112,14 @@
                 opacity: 0;
             }
             10% {
-                opacity: 0.75;
+                opacity: 0.85;
             }
             50% {
                 transform: translateX(50vw) translateY(-40px);
-                opacity: 0.85;
+                opacity: 0.95;
             }
             90% {
-                opacity: 0.75;
+                opacity: 0.85;
             }
             100% {
                 transform: translateX(115vw) translateY(20px);
@@ -120,14 +149,14 @@
 
         /* Container Card */
         .card {
-            background: rgba(13, 11, 18, 0.88);
-            border: 1px solid rgba(168, 85, 247, 0.35);
-            backdrop-filter: blur(12px);
+            background: rgba(13, 11, 20, 0.88);
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            backdrop-filter: blur(14px);
             border-radius: 20px;
             width: 100%;
             max-width: 420px;
             padding: 32px 24px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 0 25px rgba(168, 85, 247, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 0 30px rgba(168, 85, 247, 0.25);
             text-align: center;
             z-index: 1;
         }
@@ -140,7 +169,7 @@
             border-radius: 50%;
             padding: 3px;
             background: linear-gradient(135deg, #a855f7, #581c87);
-            box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
         }
 
         .profile-img {
@@ -204,7 +233,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: rgba(24, 18, 36, 0.7);
+            background: rgba(24, 18, 36, 0.75);
             border: 1px solid rgba(168, 85, 247, 0.3);
             padding: 14px 20px;
             border-radius: 12px;
@@ -260,8 +289,9 @@
 </head>
 <body>
 
-    <!-- Dark Background Layer -->
-    <div class="bat-bg">
+    <!-- Darkwave Animated Gradient Background & Grid Texture -->
+    <div class="darkwave-bg"></div>
+    <div class="darkwave-grid">
         <div class="gothic-moon"></div>
     </div>
 
